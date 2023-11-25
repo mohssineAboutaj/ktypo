@@ -26,7 +26,7 @@
           </div>
           <div class="col-span-1 flex justify-center items-center">
             <button
-              class="btn btn-primary"
+              class="btn btn-primary uppercase"
               @click="reverseText"
               :class="{ 'btn-disabled': form.text.length === 0 }"
             >
@@ -53,6 +53,7 @@
 
 <script setup>
 import { reactive, ref } from "vue"
+import { useLayouts } from "@/compasables/layouts"
 
 // data
 /// static
@@ -84,105 +85,7 @@ const currentLayout = ref(keyboardLayouts[0])
  * @returns {string}
  */
 const transformText = (char) => {
-  const arabicLayout = [
-    "ض",
-    "ص",
-    "ث",
-    "ق",
-    "ف",
-    "غ",
-    "ع",
-    "ه",
-    "خ",
-    "ح",
-    "ج",
-    "د",
-    "ش",
-    "س",
-    "ي",
-    "ب",
-    "ل",
-    "ا",
-    "ت",
-    "ن",
-    "م",
-    "ك",
-    "ط",
-    "ئ",
-    "ء",
-    "ؤ",
-    "ر",
-    "لا",
-    "ى",
-    "ة",
-    "و",
-    "ز",
-    "ظ",
-    "ذ",
-    "ّ",
-    "َ",
-    "ً",
-    "ُ",
-    "ٌ",
-    "ِ",
-    "ٍ",
-    "ْ",
-    "]",
-    "[",
-    "}",
-    "{",
-    "؛",
-    ">",
-    "<",
-    "؟",
-    "/",
-    "ئ",
-    "ء",
-    "ؤ",
-    "ر",
-    "لا",
-    "ى",
-    "ة",
-    "و",
-    "ز",
-    "ظ",
-    "ذ",
-  ]
-  const englishLayout = [
-    "q",
-    "w",
-    "e",
-    "r",
-    "t",
-    "y",
-    "u",
-    "i",
-    "o",
-    "p",
-    "[",
-    "]",
-    "a",
-    "s",
-    "d",
-    "f",
-    "g",
-    "h",
-    "j",
-    "k",
-    "l",
-    ";",
-    "'",
-    "z",
-    "x",
-    "c",
-    "v",
-    "b",
-    "n",
-    "m",
-    ",",
-    ".",
-    "/",
-  ]
+  const { arabicLayout, englishLayout } = useLayouts()
   let newChar = ""
 
   // chart not in both arrays, return it as it is
