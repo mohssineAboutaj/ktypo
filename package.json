@@ -1,6 +1,7 @@
 {
   "name": "ktypo",
-  "version": "0.5.0",
+  "version": "0.6.0",
+  "description": "A fun project to transform text between arabic/english keyboard layouts",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -43,5 +44,10 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Mohssine Aboutaj",
+    "email": "mohssineaboutaj1995@gmail.com"
+  }
 }
