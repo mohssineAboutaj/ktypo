@@ -1,12 +1,14 @@
 <template>
   <main
-    class="container mx-auto pt-16 h-screen flex justify-center items-center"
+    class="container mx-auto pt-16 min-h-screen flex justify-center items-center"
   >
     <div class="card md:w-4/6">
       <h1 class="card-title capitalize mx-auto font-black text-4xl mb-4">
         {{ title }}
       </h1>
-      <h3 class="card-title capitalize mx-auto">{{ subtitle }}</h3>
+      <h3 class="card-title capitalize mx-auto font-normal text-center">
+        {{ subtitle }}
+      </h3>
       <div class="card-body">
         <div class="grid grid-cols-5 gap-y-8 gap-x-4">
           <div class="col-span-5 md:col-span-2">
@@ -79,7 +81,7 @@ import { useClipboard } from "@vueuse/core"
 // data
 /// static
 const title = require("../package.json").name
-const subtitle = "text reverse"
+const subtitle = "type your text to encode/transform and have fun"
 const contentTxt = {
   text: {
     label: "type your text to encode/transform",

@@ -1,6 +1,6 @@
 {
   "name": "ktypo",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A fun project to transform text between arabic/english keyboard layouts",
   "private": true,
   "scripts": {
