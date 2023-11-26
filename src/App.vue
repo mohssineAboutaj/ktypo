@@ -25,11 +25,8 @@
             ></textarea>
           </div>
           <div class="col-span-5 md:col-span-1 flex justify-center items-start">
-            <div class="grid grid-cols-2 md:grid-cols-1 gap-4 md:mt-10">
-              <select
-                class="select select-primary w-full"
-                v-model="currentLayout"
-              >
+            <div class="grid grid-cols-3 md:grid-cols-1 gap-4 md:mt-10 w-full">
+              <select class="select select-primary" v-model="currentLayout">
                 <option
                   v-for="(layout, index) in keyboardLayouts"
                   :key="index"
@@ -39,11 +36,19 @@
                 </option>
               </select>
               <button
-                class="btn btn-primary uppercase w-full"
+                class="btn btn-primary uppercase"
                 @click="reverseText"
                 :class="{ 'btn-disabled': form.text.length === 0 }"
               >
-                <span>reverse</span>
+                reverse
+              </button>
+              <button
+                v-if="isSupported"
+                class="btn btn-success uppercase btn-outline"
+                :class="{ 'btn-disabled': form.result.length === 0 }"
+                @click="copy(form.result)"
+              >
+                {{ copied ? "copied" : "copy result" }}
               </button>
             </div>
           </div>
@@ -69,6 +74,7 @@
 <script setup>
 import { reactive, ref } from "vue"
 import { useLayouts } from "@/compasables/layouts"
+import { useClipboard } from "@vueuse/core"
 
 // data
 /// static
@@ -89,6 +95,11 @@ const form = reactive({
   result: "",
 })
 const currentLayout = ref(keyboardLayouts[0])
+
+// uses
+const { copy, copied, isSupported } = useClipboard({
+  source: currentLayout.value,
+})
 
 // methods
 /**
