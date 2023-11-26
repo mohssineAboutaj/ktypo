@@ -24,14 +24,28 @@
               :dir="currentLayout === keyboardLayouts[0] ? 'rtl' : 'ltr'"
             ></textarea>
           </div>
-          <div class="col-span-1 flex justify-center items-center">
-            <button
-              class="btn btn-primary uppercase"
-              @click="reverseText"
-              :class="{ 'btn-disabled': form.text.length === 0 }"
-            >
-              <span>reverse</span>
-            </button>
+          <div class="col-span-5 md:col-span-1 flex justify-center items-start">
+            <div class="grid grid-cols-2 md:grid-cols-1 gap-4 md:mt-10">
+              <select
+                class="select select-primary w-full"
+                v-model="currentLayout"
+              >
+                <option
+                  v-for="(layout, index) in keyboardLayouts"
+                  :key="index"
+                  :value="layout"
+                >
+                  {{ layout }}
+                </option>
+              </select>
+              <button
+                class="btn btn-primary uppercase w-full"
+                @click="reverseText"
+                :class="{ 'btn-disabled': form.text.length === 0 }"
+              >
+                <span>reverse</span>
+              </button>
+            </div>
           </div>
           <div class="col-span-5 md:col-span-2">
             <label for="result" class="label">
@@ -42,6 +56,7 @@
               v-model="form.result"
               class="textarea textarea-bordered w-full bg-primary bg-opacity-25 font-bold"
               rows="10"
+              :dir="currentLayout === keyboardLayouts[0] ? 'ltr' : 'rtl'"
               readonly
             ></textarea>
           </div>
